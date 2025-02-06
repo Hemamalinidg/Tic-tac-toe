@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(45deg, #ff7f50, #6a5acd, #ff6347);
+    animation: gradientBackground 5s ease-in-out infinite;
+    transition: background 0.5s ease-in-out;
+}
+
+@keyframes gradientBackground {
+    0% { background: linear-gradient(45deg, #ff7f50, #6a5acd, #ff6347); }
+    50% { background: linear-gradient(45deg, #ff6347, #ff7f50, #6a5acd); }
+    100% { background: linear-gradient(45deg, #6a5acd, #ff6347, #ff7f50); }
+}
+
+body.dark-mode {
+    background: linear-gradient(45deg, #333, #555, #777);
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    transform: rotateX(10deg) rotateY(-15deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 2em;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.2s;
+}
+
+.cell:hover {
+    transform: scale(1.1) rotateY(360deg);
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.cell.X {
+    color: #ff6347;
+    transform: rotateY(180deg);
+}
+
+.cell.O {
+    color: #6a5acd;
+    transform: rotateY(180deg);
+}
+
+.status {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #ff4500;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.toggle-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+button#theme-toggle {
+    background-color: #6a5acd;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button#theme-toggle:hover {
+    background-color: #5a4ca6;
+}
